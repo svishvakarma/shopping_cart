@@ -1,0 +1,23 @@
+
+<table class ='table'>
+<tbody>
+<thead>
+    <tr>
+        <th>Name</th><th>Price</th><th>quantity</th><th>subtotal</th>
+    </tr>
+</thead>
+
+    <%@lineitems.each do |lineitem|%>
+        <%@product =Product.find(lineitem.product_id)%>
+    <tr>
+        <td><%= @product.title%></td>
+        <td><%=lineitem.price%></td>
+        <td><%=lineitem.quantity%></td>
+        <td><%=lineitem.price * lineitem.quantity%></td>
+        <td><%=button_to "Remove from cart", lineitem_path(lineitem), method: :delete%></td>
+    </tr>
+    <% end %>
+</tbody>
+</table>
+
+<%=link_to "Order Now",payment_path,method: :get %>

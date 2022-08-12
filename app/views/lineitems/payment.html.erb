@@ -1,0 +1,12 @@
+<h1>Payment mode</h1>
+
+<%= form_with model: @lineitem , url:payment_type_path, method: :PATCH do |form| %>
+  <div>
+    <%= form.label :payment_mode %><br>
+    <%= form.text_field :payment_mode %>
+  </div>
+  
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

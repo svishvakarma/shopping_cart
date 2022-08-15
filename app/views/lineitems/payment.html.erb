@@ -1,12 +1,21 @@
-<h1>Payment mode</h1>
+
+<h1>Payment process</h1>
 
 <%= form_with model: @lineitem , url:payment_type_path, method: :PATCH do |form| %>
-  <div>
-    <%= form.label :payment_mode %><br>
-    <%= form.text_field :payment_mode %>
-  </div>
   
   <div>
-    <%= form.submit %>
+    <%= form.label :payment_mode %><br>
+    <%= form.text_field :payment_mode %>  
   </div>
+  
+
+  <div class="alert alert-success" role="alert">
+  <div class="btn-group" role="group">
+  <button type="button" class="btn btn-primary"><%=form.submit%></button> 
+  
+  </div>
+    </div>
+  
 <% end %>
+
+<%=flash[:message] %>

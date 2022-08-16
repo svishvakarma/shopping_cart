@@ -7,9 +7,7 @@
 
 <table class='table'>
  <thead>
-    <tr>
-        <th>title</th><th>Price</th><th>Edit Product</th><th>Destroy Product</th>
-    </tr>
+      <tr><th>title</th><th>Price</th><th>Edit Product</th><th>Destroy Product</th></tr>
  </thead>
 <tbody>
     <%@products.each do |product|%>
@@ -23,9 +21,19 @@
 </tbody>
 </table>
 
+<br> <br>
+
+<% if current_user.orders!=nil%>
+
+<%= button_to "mydash ", mydash_path, method: :get %>
+<%end %>
+
+
 
 <br> <br>
 <%= link_to "New Product", new_seller_path %>
+
+<%=@products.first.price%>
 
 
 

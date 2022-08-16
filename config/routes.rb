@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   resources :home
 
   get "/payment" ,to: "lineitems#payment" 
+  get "/mydash" ,to: "sellers#mydash" 
   patch "/payment_type" ,to: "lineitems#payment_type"
 end

@@ -1,6 +1,7 @@
 class SellersController < ApplicationController
   def index
     @products=current_user.products
+    
   end
   
   def new
@@ -35,7 +36,16 @@ class SellersController < ApplicationController
 
     redirect_to sellers_path
   end
-  
+  def mydash
+    @a=Lineitem.joins(:product).where("products.user_id =? ", 1)
+    @total_price=0
+    @total_quantity=0
+    @a.each do |product|
+    @total_price=@total_price+(product.price*product.quantity)
+    @total_quantity=@total_quantity+product.quantity
+    end
+  end
+    
   private
     def product_params
       params.require(:product).permit(:title, :discription,:price)

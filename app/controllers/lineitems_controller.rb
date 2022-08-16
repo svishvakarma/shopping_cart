@@ -1,19 +1,19 @@
 class LineitemsController < ApplicationController
-    before_action :authenticate_user!
-      def index
-          @order=current_user.orders.last
-          if @order
-            if @order.cart?
-              @lineitems = @order.lineitems
-            else
-              @lineitem=nil
-            end
+  before_action :authenticate_user!
+    def index
+      @order=current_user.orders.last
+        if @order
+          if @order.cart?
+            @lineitems = @order.lineitems
+          else
+            @lineitem=nil
+          end
           else
              @lineitem=nil
           end 
-      end
+    end
 
-      def create
+    def create
         @user=User.find(current_user.id)
         @order=@user.orders.last
         if @order 
@@ -56,10 +56,8 @@ class LineitemsController < ApplicationController
             end
         else
           sample
-        end
-      
-       
-      end
+        end    
+  end
       def destroy
         @lineitem = Lineitem.find(params[:id])
         @lineitem.destroy

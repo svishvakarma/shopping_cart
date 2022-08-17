@@ -1,39 +1,35 @@
 <br> <br>
 <% if user_signed_in? %>     
-    <%=button_to "logout", destroy_user_session_path, method: :delete %>
+  <%=button_to "logout", destroy_user_session_path, method: :delete %>
 <%else%>
-    <%=button_to "login", new_user_session_path, method: :get %>
+  <%=button_to "login", new_user_session_path, method: :get %>
 <%end%>
 
 <table class='table'>
  <thead>
-      <tr><th>title</th><th>Price</th><th>Edit Product</th><th>Destroy Product</th></tr>
+    <tr><th>title</th><th>Price</th><th>Edit Product</th><th>Destroy Product</th></tr>
  </thead>
 <tbody>
-    <%@products.each do |product|%>
-    <tr>
-        <td><strong><%=product.title%> </strong></td>
-        <td><strong><%=product.price%> </strong></td>
-        <td><%= link_to "Edit Product", edit_seller_path(product) %><td>
-        <td><%= link_to "Destroy Product", seller_path(product), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %><td>
+  <%@products.each do |product|%>
+  <tr>
+    <td><strong><%=product.title%> </strong></td>
+    <td><strong><%=product.price%> </strong></td>
+    <td><%= link_to "Edit Product", edit_seller_path(product) %></td>
+    <td><%= link_to "Destroy Product", seller_path(product), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></td>
     </tr>
     <%end%>
 </tbody>
 </table>
 
 <br> <br>
-
 <% if current_user.orders!=nil%>
-
-<%= button_to "mydash ", mydash_path, method: :get %>
+ <%= button_to "mydash ", mydash_path, method: :get %>
 <%end %>
 
-
-
 <br> <br>
-<%= link_to "New Product", new_seller_path %>
+<button><%= link_to "New Product", new_seller_path %></button>
 
-<%=@products.first.price%>
+
 
 
 
